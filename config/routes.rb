@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # Adminのルーティングを記述する
+    resources :customer,only: [:index, :show, :edit, :update]
   end
 
   scope module: :public do
