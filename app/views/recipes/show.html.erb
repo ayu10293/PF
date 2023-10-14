@@ -1,0 +1,6 @@
+<h1>レシピ詳細</h1>
+
+<P><%= @recipe.title %></P>
+<P><%= @recipe.body %></P>
+
+<%= link_to 'レシピを編集', recipes_edit_path(@recipe.id) %>
