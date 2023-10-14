@@ -1,6 +1,13 @@
 <h1>レシピ詳細</h1>
 
-<P><%= @recipe.title %></P>
-<P><%= @recipe.body %></P>
+<div><%= @recipe.title %></div>
+<div><%= @recipe.body %></div>
+<% if @recipe.images.attached? %>
+  <div>
+    <% @recipe.images.each do |image| %>
+      <%= image_tag image, class: "img-fluid" %>
+    <% end %>
+  </div>
+<% end %>
 
-<%= link_to 'レシピを編集', recipes_edit_path(@recipe.id) %>
+<%= link_to 'レシピを編集', edit_recipe_path(@recipe) %>
