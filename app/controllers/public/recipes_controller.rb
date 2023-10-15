@@ -26,10 +26,20 @@ class Public::RecipesController < ApplicationController
   def edit
     @recipe = Recipe.find(params[:id])
 
+    # 本人以外は、編集させずにトップへ飛ばす
+    unless @recipe.customer == current_customer
+      redirect_to root_path
+    end
   end
 
   def update
     @recipe = Recipe.find(params[:id])
+
+    # 本人以外は、編集させずにトップへ飛ばす
+    unless @recipe.customer == current_customer
+      redirect_to root_path
+    end
+
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else

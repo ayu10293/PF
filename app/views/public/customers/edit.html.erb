@@ -1,0 +1,11 @@
+<div class="container">
+  <%= form_with model: @customer, url: customer_path(@customer), method: :put do |f| %>
+    <div class="form-group">
+      <%= f.label :name, "名前" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "名前変更", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

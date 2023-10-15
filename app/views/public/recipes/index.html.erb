@@ -2,5 +2,8 @@
 <% @recipes.each do |recipe|%>
   <div>
     <%= link_to recipe.title, recipe_path(recipe) %>
+    <small class="text-black-50">
+      <%= link_to recipe.customer.name, customer_path(recipe.customer) %>
+    </small>
   </div>
 <% end %>
