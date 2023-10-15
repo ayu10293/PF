@@ -10,4 +10,6 @@
   </div>
 <% end %>
 
-<%= link_to 'レシピを編集', edit_recipe_path(@recipe) %>
+<% if @recipe.customer == current_customer %>
+  <%= link_to 'レシピを編集', edit_recipe_path(@recipe) %>
+<% end %>
