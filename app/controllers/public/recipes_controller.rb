@@ -1,12 +1,18 @@
-class RecipesController < ApplicationController
+class Public::RecipesController < ApplicationController
+  before_action :authenticate_customer!, except: [:index]
+
   def new
     @recipe = Recipe.new
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.save
-    redirect_to recipes_index_path
+    @recipe.customer_id = current_customer.id
+    if @recipe.save
+      redirect_to recipes_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -19,16 +25,21 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = Recipe.find(params[:id])
-    
-  end
-  
-  def update
-    @recipe = Recipe.find(params[:id])
-    @recipe.update(recipe_params)
-    redirect_to recipes_show_path
+
   end
 
-  def private
-    params.require(:recipe).permit(:title, :body)
+  def update
+    @recipe = Recipe.find(params[:id])
+    if @recipe.update(recipe_params)
+      redirect_to recipe_path(@recipe)
+    else
+      render :edit
+    end
+  end
+
+  private
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :body, images: [])
   end
 end

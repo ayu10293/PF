@@ -1,4 +1,6 @@
 <h1>レシピ一覧</h1>
-<% @recipe.each do |recipe|%>
-  <span><%= recipe.title %></span>
+<% @recipes.each do |recipe|%>
+  <div>
+    <%= link_to recipe.title, recipe_path(recipe) %>
+  </div>
 <% end %>
