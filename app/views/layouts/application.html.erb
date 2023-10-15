@@ -18,7 +18,7 @@
       <%= link_to 'レシピ一覧', recipes_path %>
       <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete %>
     <% elsif admin_signed_in? %>
-      <%= link_to '管理者ログアウト', destroy_adminsession_path, method: :delete %>
+      <%= link_to '管理者ログアウト', destroy_admin_session_path, method: :delete %>
     <% else %>
       <%= link_to '新規登録', new_customer_registration_path %>
       <%= link_to 'ログイン', new_customer_session_path %>
