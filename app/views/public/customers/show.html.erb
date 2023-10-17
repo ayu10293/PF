@@ -20,6 +20,8 @@
     <div>
       <%= link_to "ユーザー名変更", edit_customer_path(@customer) %>
     </div>
-    <div>退会するボタン</div>
+    <div>
+      <%= link_to '退会', customers_confirm_path %>
+    </div>
   <% end %>
 </div>

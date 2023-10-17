@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     # public配下はすべてここで処理させる
     # カスタマーのルーティングを記述する
     # ref: https://qiita.com/ryosuketter/items/9240d8c2561b5989f049#module--controller
+    get 'customers/confirm' => 'customers#confirm'#退会確認画面
+    patch 'customers/withdraw' => 'customers#withdraw'#削除
     resources :customers, only: [:show, :edit, :update]
     resources :recipes do
       # コメント機能を付ける場合、public/comments_conteollerを作り以下を使う
