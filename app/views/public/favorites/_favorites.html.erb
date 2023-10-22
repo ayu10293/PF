@@ -1,0 +1,4 @@
+<% if recipe.favorite_by?(current_customer) %>
+<%= link_to recipe_favorite_path(recipe), method: :delete do %>
+  <div class="fas fa-heart"></div>
+<% end %>
