@@ -6,5 +6,6 @@
     <small class="text-black-50">
       <%= link_to recipe.customer.name, customer_path(recipe.customer) %>
     </small>
+    <%= render "public/favorites/favorites", recipe: recipe %>
   </div>
 <% end %>
