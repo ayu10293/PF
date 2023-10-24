@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     resources :recipes do
       # コメント機能を付ける場合、public/comments_conteollerを作り以下を使う
       resources :comments, only: [:create, :destroy]
+      collection do # ref: https://qiita.com/hirokihello/items/fa82863ab10a3052d2ff
+        get 'favorites' => 'favorites#index'
+      end
+      resource :favorites, only: [:create, :destroy] # indexが作られないので、上で定義している
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
