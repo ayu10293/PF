@@ -10,11 +10,9 @@
       <div class="content">
         <%= simple_format(comment.comment) %>
       </div>
-      <% if comment.customer == current_customer %>
-        <div class="action">
-          <%= link_to "Destroy", admin_recipe_comment_path(recipe, comment), method: :delete, class: "btn btn-sm btn-danger" %>
-        </div>
-      <% end %>
+      <div class="action">
+        <%= link_to "Destroy", admin_recipe_comment_path(recipe, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+      </div>
     </div>
   <% end %>
 </div>

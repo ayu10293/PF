@@ -1,0 +1,22 @@
+<div class="container">
+  <h2><%= @customer == current_customer ? "マイページ(#{@customer.name}さん)" : "#{@customer.name}さんのページ" %></h2>
+
+  <div>
+    <h3>投稿したレシピ一覧</h3>
+    <% if @recipes.present? %>
+      <ul>
+        <% @recipes.each do |recipe| %>
+          <li>
+            <%= link_to recipe.title, admin_recipe_path(recipe) %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      投稿されたレシピはありません
+    <% end %>
+  </div>
+
+  <div>
+    <%= link_to "ユーザー名変更", edit_customer_path(@customer) %>
+  </div>
+</div>
