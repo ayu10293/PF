@@ -5,8 +5,8 @@
 <% if @recipe.images.attached? %>
   <div>
     <% @recipe.images.each do |image| %>
-      <%= image_tag image, class: "img-fluid" %>
-    <% end %>
+      <%= image_tag image, class: "img-fluid" ,size: "200x200"%>
+      <% end %>
   </div>
 <% end %>
 
