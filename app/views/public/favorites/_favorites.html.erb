@@ -1,3 +1,4 @@
+<% if customer_signed_in? %>
 <% if recipe.favorite_by?(current_customer) %>
   <%= link_to recipe_favorites_path(recipe), method: :delete do %>
     <i class="fa-solid fa-heart"></i>
@@ -6,4 +7,5 @@
   <%= link_to recipe_favorites_path(recipe), method: :post do %>
     <i class="fa-regular fa-heart"></i>
   <% end %>
+<% end %>
 <% end %>

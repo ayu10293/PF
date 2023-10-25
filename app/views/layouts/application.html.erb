@@ -13,7 +13,10 @@
   </head>
 
   <body>
-
+ 
+<div class="container">
+<div class="row">
+<div class="col-md-3">
     <% if customer_signed_in? %>
       <%= link_to new_recipe_path, class: "btn btn-success" do %>
         投稿<i class="fa-solid fa-pen"></i>
@@ -45,6 +48,9 @@
         管理者ログイン<i class="fa-solid fa-unlock"></i>
       <% end %>
     <% end %>
+</div>
+</div>
+</div>
 
     <%= yield %>
   </body>
