@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>買い物リスト</h2>
+  <% @favorites.each do |favorite| %>
+    <div>
+      <h3><%= favorite.recipe.title %></h3>
+      <ol>
+        <% favorite.recipe.recipe_ingredients.each do |recipe_ingredient| %>
+          <li>
+            <%= recipe_ingredient.name %>
+            <ul>
+              <li>
+                <%= recipe_ingredient.quantity %>
+              </li>
+            </ul>
+          </li>
+        <% end %>
+      </ol>
+    </div>
+  <% end %>
+</div>

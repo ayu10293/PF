@@ -20,7 +20,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   protected
   def after_sign_in_path_for(resource)
-    recipes_path
+    admin_recipes_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.

@@ -1,18 +1,35 @@
-<h1>レシピ詳細</h1>
+<div class="container">
+  <h1>レシピ詳細</h1>
 
-<div><%= @recipe.title %></div>
-<div><%= @recipe.body %></div>
-<% if @recipe.images.attached? %>
-  <div>
-    <% @recipe.images.each do |image| %>
-      <%= image_tag image, class: "img-fluid" ,size: "200x200"%>
-      <% end %>
-  </div>
-<% end %>
+  <div><%= @recipe.title %></div>
+  <div><%= @recipe.body %></div>
+  <% if @recipe.images.attached? %>
+    <div>
+      <% @recipe.images.each do |image| %>
+        <%= image_tag image, class: "img-fluid" ,size: "200x200"%>
+        <% end %>
+    </div>
+  <% end %>
 
+  <h2>材料</h2>
 
-<%= render "public/comments/index", recipe: @recipe, comment: @comment %>
-<%= render "public/comments/form", recipe: @recipe, comment: @comment %>
-<% if @recipe.customer == current_customer %>
-  <%= link_to 'レシピを編集', edit_recipe_path(@recipe) %>
-<% end %>
+  <ol>
+    <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+      <li>
+        <%= recipe_ingredient.name %>
+        <ul>
+          <li><%= recipe_ingredient.quantity %></li>
+        </ul>
+      </li>
+    <% end %>
+  </ol>
+
+  <% if @recipe.customer == current_customer %>
+    <%= link_to 'レシピを編集', edit_recipe_path(@recipe) %>
+    <%= link_to 'レシピを削除', recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+  <% end %>
+
+  <%= render "public/comments/index", recipe: @recipe, comment: @comment %>
+  <%= render "public/comments/form", recipe: @recipe, comment: @comment %>
+
+</div>

@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>レシピ詳細</h1>
+
+  <div><%= @recipe.title %></div>
+  <div><%= @recipe.body %></div>
+  <% if @recipe.images.attached? %>
+    <div>
+      <% @recipe.images.each do |image| %>
+        <%= image_tag image, class: "img-fluid" ,size: "200x200"%>
+        <% end %>
+    </div>
+  <% end %>
+
+  <%= link_to 'レシピを編集', edit_admin_recipe_path(@recipe) %>
+  <%= link_to 'レシピを削除', admin_recipe_path(@recipe), method: :delete, data: {confirm: "本当に削除しますか？"} %>
+
+  <%= render "admin/comments/index", recipe: @recipe, comment: @comment %>
+
+</div>

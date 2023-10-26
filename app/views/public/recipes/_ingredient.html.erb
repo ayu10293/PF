@@ -1,0 +1,18 @@
+<%# 以下の.nested-fieldsは、必須です。 %>
+<div class="nested-fields">
+  <div class="form-group">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.label :name, '食材名' %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.label :quantity, '量' %>
+        <%= f.text_field :quantity, class: "form-control" %>
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <%= link_to_remove_association "削除", f, class: "btn btn-danger btn-block" %>
+      </div>
+    </div>
+  </div>
+</div>

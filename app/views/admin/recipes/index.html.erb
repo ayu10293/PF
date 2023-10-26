@@ -1,0 +1,10 @@
+<div><%= flash[:notice] %></div>
+<h1>レシピ一覧</h1>
+<% @recipes.each do |recipe|%>
+  <div>
+    <%= link_to recipe.title, admin_recipe_path(recipe) %>
+    <small class="text-black-50">
+      <%= link_to recipe.customer.name, admin_customer_path(recipe.customer) %>
+    </small>
+  </div>
+<% end %>

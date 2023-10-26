@@ -3,6 +3,7 @@ class Public::RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    @recipe.recipe_ingredients.build
   end
 
   def create
@@ -48,9 +49,22 @@ class Public::RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    unless @recipe.customer == current_customer
+      redirect_to root_path
+    end
+
+    if @recipe.destroy
+      redirect_to recipes_path
+    else
+      render :show
+    end
+  end
+
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :body, images: [])
+    params.require(:recipe).permit(:title, :body, recipe_ingredients_attributes: [:id, :name, :quantity, :_destroy], images: [])
   end
 end
