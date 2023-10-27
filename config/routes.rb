@@ -1,29 +1,12 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'bags/index'
-  end
-  #namespace :admin do
-    #get 'comments/form'
-    #get 'comments/index'
-  #end
-  root to: 'homes#top'
 
+  root to: 'homes#top'
+  
+  #-------------------------------会員側----------------------------------------
   devise_for :customers, module: 'public', skip: [:passwords], contollers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  devise_for :admin, module: 'admin', skip: [:registrations, :passwords], contllers: {
-    sessions: "admin/sessions"
-  }
-
-  namespace :admin do
-    # Adminのルーティングを記述する
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :recipes, only: [:index, :show, :edit, :update, :destroy] do
-      resources :comments, only: [:destroy]
-    end
-  end
 
   scope module: :public do
     # public配下はすべてここで処理させる
@@ -40,6 +23,21 @@ Rails.application.routes.draw do
         get 'favorites' => 'favorites#index'
       end
       resource :favorites, only: [:create, :destroy] # indexが作られないので、上で定義している
+    end
+  end
+
+
+
+  #-------------------------------管理者側--------------------------------------
+  devise_for :admin, module: 'admin', skip: [:registrations, :passwords], contllers: {
+    sessions: "admin/sessions"
+  }
+  
+  namespace :admin do
+    # Adminのルーティングを記述する
+    resources :customers, only: [:index, :show, :edit, :update, :destroy]
+    resources :recipes, only: [:index, :show, :edit, :update, :destroy] do
+      resources :comments, only: [:destroy]
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

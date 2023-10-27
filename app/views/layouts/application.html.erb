@@ -13,7 +13,7 @@
   </head>
 
   <body>
- 
+
 <div class="container">
 <div class="row">
 <div class="col-md-3">
@@ -30,12 +30,18 @@
       <%= link_to customer_path(current_customer), class: "btn btn-success" do %>
         マイページ<i class="fa-solid fa-user"></i>
       <% end %>
+      <%= link_to bags_path, class: "btn btn-success" do %>
+        買い物リスト<i class="fa-solid fa-pen"></i>
+      <% end %>
       <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-success" do %>
         ログアウト<i class="fa-solid fa-right-from-bracket"></i>
       <% end %>
     <% elsif admin_signed_in? %>
       <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-success" do %>
         管理者ログアウト<i class="fa-solid fa-lock"></i>
+      <% end %>
+      <%= link_to admin_customers_path, class: "btn btn-success" do %>
+        会員一覧<i class="fa-solid fa-lock"></i>
       <% end %>
     <% else %>
       <%= link_to new_customer_registration_path, class: "btn btn-success" do %>
@@ -51,7 +57,7 @@
 </div>
 </div>
 </div>
-
+<div><%= flash[:notice] %></div>
     <%= yield %>
   </body>
 </html>
