@@ -43,6 +43,9 @@
       <%= link_to admin_customers_path, class: "btn btn-success" do %>
         会員一覧<i class="fa-solid fa-lock"></i>
       <% end %>
+      <%= link_to admin_recipes_path, class: "btn btn-success" do %>
+        レシピ一覧<i class="fa-solid fa-utensils"></i>
+      <% end %>
     <% else %>
       <%= link_to new_customer_registration_path, class: "btn btn-success" do %>
         新規登録<i class="fa-solid fa-address-card"></i>
