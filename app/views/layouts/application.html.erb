@@ -12,11 +12,10 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
+  <body class="background-image">
 <div class="container">
 <div class="row">
-<div class="col-md-3">
+<div class="col-md-10">
     <% if customer_signed_in? %>
       <%= link_to new_recipe_path, class: "btn btn-success" do %>
         投稿<i class="fa-solid fa-pen"></i>
