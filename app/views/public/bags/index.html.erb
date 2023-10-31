@@ -2,16 +2,19 @@
   <h2>買い物リスト</h2>
   <% @favorites.each do |favorite| %>
     <div>
-      <h3><%= favorite.recipe.title %></h3>
+      <h3><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h3>
       <ol>
         <% favorite.recipe.recipe_ingredients.each do |recipe_ingredient| %>
           <li>
-            <%= recipe_ingredient.name %>
-            <ul>
-              <li>
-                <%= recipe_ingredient.quantity %>
-              </li>
-            </ul>
+            <div>
+              <%= recipe_ingredient.name %>
+            </div>
+            <div>
+              分量：<%= recipe_ingredient.quantity %>
+            </div>
+            <div class="mb-3">
+              チェック：<%= check_box_tag recipe_ingredient.quantity %>
+            </div>
           </li>
         <% end %>
       </ol>

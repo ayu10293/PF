@@ -17,11 +17,13 @@
   </div>
 
   <% if @customer == current_customer %>
-    <div>
-      <%= link_to "ユーザー名変更", edit_customer_path(@customer) %>
-    </div>
-    <div>
-      <%= link_to '退会', customers_confirm_path %>
-    </div>
+    <% unless @customer.guest_user? %>
+      <div>
+        <%= link_to "ユーザー名変更", edit_customer_path(@customer) %>
+      </div>
+      <div>
+        <%= link_to '退会', customers_confirm_path %>
+      </div>
+    <% end %>
   <% end %>
 </div>

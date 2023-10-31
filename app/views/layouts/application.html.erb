@@ -27,7 +27,7 @@
       <%= link_to favorites_recipes_path, class: "btn btn-success" do %>
         お気に入り<i class="fa-solid fa-heart"></i>
       <% end %>
-      <%= link_to customer_path(current_customer), class: "btn btn-success" do %>
+      <%= link_to customer_mypage_path(current_customer), class: "btn btn-success" do %>
         マイページ<i class="fa-solid fa-user"></i>
       <% end %>
       <%= link_to bags_path, class: "btn btn-success" do %>
@@ -47,6 +47,9 @@
         レシピ一覧<i class="fa-solid fa-utensils"></i>
       <% end %>
     <% else %>
+      <div class="row">
+      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
+      </div>
       <%= link_to new_customer_registration_path, class: "btn btn-success" do %>
         新規登録<i class="fa-solid fa-address-card"></i>
       <% end %>
