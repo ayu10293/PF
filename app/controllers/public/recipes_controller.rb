@@ -8,8 +8,28 @@ class Public::RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
+    unless recipe_params[:images].blank?
+      tags = []
+      recipe_params[:images].each do |image|
+        tags +=  Vision.get_image_data(image)
+      end
+
+      # いずれかのワードが含まれていない場合は、newにもどす
+      unless tags.include?("Food") || tags.include?("Ingredient")
+        render :new
+        return
+      end
+    end
+
+#    tags = Vision.get_image_data(recipe_params[:images])
     @recipe.customer_id = current_customer.id
     if @recipe.save
+      unless recipe_params[:images].blank?
+        tags.each do |tag|
+          @recipe.tags.create(name: tag)
+        end
+      end
       redirect_to recipes_path
     else
       render :new
@@ -42,7 +62,28 @@ class Public::RecipesController < ApplicationController
       redirect_to root_path
     end
 
+    unless recipe_params[:images].blank?
+      tags = []
+      recipe_params[:images].each do |image|
+        tags +=  Vision.get_image_data(image)
+      end
+
+      # いずれかのワードが含まれていない場合は、newにもどす
+      unless tags.include?("Food") || tags.include?("Ingredient")
+        render :new
+        return
+      end
+    end
+
+
+
     if @recipe.update(recipe_params)
+      unless recipe_params[:images].blank?
+        @recipe.tags.destroy_all
+        tags.each do |tag|
+          @recipe.tags.create(name: tag)
+        end
+      end
       redirect_to recipe_path(@recipe)
     else
       render :edit

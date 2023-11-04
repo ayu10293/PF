@@ -10,7 +10,22 @@
   text-align: center;
 }
 
+.frame {
+        border: 1px solid black; /* 枠線を表示させる */
+        padding: 10px; /* 枠内の余白を設定する */
+        background-color: white; /* 背景色を白に設定する */
+        display: inline-block; /* インラインブロック要素として表示させる */
+}
 
+.recipe-dot-line {
+  line-height: 2;
+  display: inline;
+  background-image : linear-gradient(to right, #b5b5b5, #b5b5b5 2px, transparent 2px, transparent 8px);
+  background-size: 8px 2px;
+  padding-bottom: 5px;
+  background-position: left bottom;
+  background-repeat: repeat-x
+}
 
 // * This is a manifest file that'll be compiled into application.css, which will include all the files
 // * listed below.

@@ -3,6 +3,7 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :recipe_ingredients, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   # reject_ifは、入力フォームを追加しているもののすべてが空白の場合にリジェクトする
   # allow_destroyは、入力フォームでこのオブジェクトが削除された際に削除を許可する
