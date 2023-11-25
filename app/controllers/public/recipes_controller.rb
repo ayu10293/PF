@@ -7,12 +7,24 @@ class Public::RecipesController < ApplicationController
   end
 
   def create
+  @recipe = Recipe.find_by_id(params[:id])
+
+  if @recipe.present?
+    if @recipe.update(recipe_params)
+      # 更新が成功した場合の処理
+      redirect_to recipe_path(@recipe.id)
+    else
+      # 更新が失敗した場合の処理
+      render :edit
+    end
+  else
     @recipe = Recipe.new(recipe_params)
+    # 新しいRecipeの場合の処理
 
     unless recipe_params[:images].blank?
       tags = []
       recipe_params[:images].each do |image|
-        tags +=  Vision.get_image_data(image)
+        tags += Vision.get_image_data(image)
       end
 
       # いずれかのワードが含まれていない場合は、newにもどす
@@ -22,19 +34,22 @@ class Public::RecipesController < ApplicationController
       end
     end
 
-#    tags = Vision.get_image_data(recipe_params[:images])
     @recipe.customer_id = current_customer.id
+
     if @recipe.save
       unless recipe_params[:images].blank?
         tags.each do |tag|
           @recipe.tags.create(name: tag)
         end
       end
-      redirect_to recipes_path
+      # 作成が成功した場合の処理
+      redirect_to recipe_path(@recipe.id)
     else
+      # 作成が失敗した場合の処理
       render :new
     end
   end
+end
 
   def index
     @recipes = Recipe.all
