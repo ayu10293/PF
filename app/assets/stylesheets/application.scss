@@ -27,6 +27,15 @@
   background-repeat: repeat-x
 }
 
+.text {
+  color: blue;  /* 目立たせたいテキストの色を指定する */
+  font-size: 40px;  /* テキストのフォントサイズを指定する */
+  font-weight: bold;  /* テキストを太字にする */
+  text-align: center;
+  text-decoration: underline;
+  text-shadow: 2px 2px 0px white;
+}
+
 // * This is a manifest file that'll be compiled into application.css, which will include all the files
 // * listed below.
 // *
