@@ -19,10 +19,10 @@
   <% if @customer == current_customer %>
     <% unless @customer.guest_user? %>
       <div>
-        <%= link_to "ユーザー名変更", edit_customer_path(@customer) %>
+        <%= link_to "ユーザー名変更", edit_customer_path(@customer), class: "btn btn-success" %>
       </div>
       <div>
-        <%= link_to '退会', customers_confirm_path %>
+        <%= link_to '退会', customers_confirm_path, class: "btn btn-success" %>
       </div>
     <% end %>
   <% end %>
