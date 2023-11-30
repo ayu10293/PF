@@ -2,7 +2,7 @@
   <h1>レシピ一覧</h1>
   <% @recipes.each do |recipe|%>
     <div>
-      <%= link_to recipe.title, recipe_path(recipe), class: "btn btn-outline-dark" %>
+      <%= link_to recipe.title, recipe_path(recipe), class: "btn btn-dark" %>
       <small class="text-black-50">
         <%= link_to recipe.customer.name, customer_mypage_path(recipe.customer), class: "btn btn-primary" %>
       </small>
