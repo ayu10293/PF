@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>レシピ一覧</h1>
+  <h1 class="btn btn-primary" >レシピ一覧</h1>
   <% @recipes.each do |recipe|%>
     <div>
       <%= link_to recipe.title, recipe_path(recipe), class: "btn btn-dark" %>
