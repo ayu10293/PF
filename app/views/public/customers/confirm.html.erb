@@ -1,4 +1,4 @@
-<h1>退会確認画面</h1>
+<h1 class="shadow" >退会確認画面</h1>
 
 <%= link_to "退会する", customers_withdraw_path, method: :patch, data: {confirm: "同じアカウントではログインできなくなってしまいます。本当に退会しますか？"} %>
-<%= link_to "マイページに戻る", customer_path(current_customer) %>
+<%= link_to "マイページに戻る", customer_mypage_path(current_customer) %>
