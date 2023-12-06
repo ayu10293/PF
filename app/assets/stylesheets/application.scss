@@ -44,6 +44,22 @@ text-shadow: 2px  2px 5px black,
             -2px -2px 5px black;
 }
 
+.list {
+color: white;
+text-shadow: 2px  2px 5px green,
+            -2px  2px 5px green,
+             2px -2px 5px green,
+            -2px -2px 5px green;
+}
+
+.red {
+color: white;
+text-shadow: 2px  2px 5px red,
+            -2px  2px 5px red,
+             2px -2px 5px red,
+            -2px -2px 5px red;
+}
+
 // * This is a manifest file that'll be compiled into application.css, which will include all the files
 // * listed below.
 // *

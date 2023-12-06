@@ -1,5 +1,5 @@
 <div class="container">
-  <h1><div class="center-text"><%= @recipe.title %></div></h1>
+  <h1 class="list"><div class="center-text"><%= @recipe.title %></div></h1>
 <div class="frame">
     <%= simple_format(@recipe.body, class: "recipe-dot-line") %>
 </div>
@@ -17,7 +17,7 @@
   <% end %>
   </div>
 
-  <h2><div class="center-text">材料</div></h2>
+  <h2 class="red"><div class="center-text">材料</div></h2>
 
   <div class="row">
     <% @recipe.recipe_ingredients.each.with_index(1) do |recipe_ingredient, index| %>
