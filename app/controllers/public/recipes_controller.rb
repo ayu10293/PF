@@ -53,6 +53,7 @@ end
 
   def index
     @recipes = Recipe.all
+    @recipe = 
   end
 
   def show

@@ -13,12 +13,13 @@
   </head>
 
   <body class="background-image">
+
 <div class="container">
 <div class="row">
 <div class="col-md-10">
     <% if customer_signed_in? %>
       <%= link_to new_recipe_path, class: "btn btn-success" do %>
-        投稿<i class="fa-solid fa-pen"></i>
+        レシピを投稿<i class="fa-solid fa-pen"></i>
       <% end %>
       <%= link_to recipes_path, class: "btn btn-success" do %>
         レシピ一覧<i class="fa-solid fa-utensils"></i>
@@ -32,7 +33,7 @@
       <%= link_to bags_path, class: "btn btn-success" do %>
         買い物リスト<i class="fa-solid fa-pen"></i>
       <% end %>
-      <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-success" do %>
+      <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-secondary" do %>
         ログアウト<i class="fa-solid fa-right-from-bracket"></i>
       <% end %>
     <% elsif admin_signed_in? %>
@@ -62,7 +63,7 @@
 </div>
 </div>
 </div>
-<div><%= flash[:notice] %></div>
+<div class="shadow"><%= flash[:notice] %></div>
     <%= yield %>
   </body>
 </html>
