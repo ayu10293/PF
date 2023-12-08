@@ -5,7 +5,7 @@
 </div>
   <% if @recipe.images.attached? %>
     <div class="center-text">
-      <% @recipe.images.each do |image| %>
+        <% @recipe.images.each do |image| %>
         <%= image_tag image, class: "img-fluid", size: "200x200" %>
         <% end %>
     </div>

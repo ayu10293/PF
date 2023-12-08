@@ -49,11 +49,10 @@ class Public::RecipesController < ApplicationController
       render :new
     end
   end
-end
+  end
 
   def index
     @recipes = Recipe.all
-    @recipe = 
   end
 
   def show
