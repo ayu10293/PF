@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   #ゲストログイン
   devise_scope :user do
     post "users/guest_sign_in", to: "users#guest_sign_in"

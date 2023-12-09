@@ -3,6 +3,7 @@
 <div class="frame">
     <%= simple_format(@recipe.body, class: "recipe-dot-line") %>
 </div>
+
   <% if @recipe.images.attached? %>
     <div class="center-text">
         <% @recipe.images.each do |image| %>

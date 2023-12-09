@@ -1,12 +1,14 @@
 <div class="container">
   <h1 class="shadow" >レシピ一覧</h1>
-  <% @recipe.images.each do |image| %>
-    <% if recipe.image.attached? %>
-      <%= image_tag recipe.image, size: "200x200" %>
-    <% else %>
-      <%= image_tag 'no_image', size: "200x200" %>
-    <% end %>
+
+  <% if @recipe.images.attached? %>
+    <div class="center-text">
+        <% @recipe.images.each do |image| %>
+        <%= image_tag image, class: "img-fluid", size: "200x200" %>
+        <% end %>
+    </div>
   <% end %>
+
   <% @recipes.each do |recipe| %>
     <div>
       <%= link_to recipe.title, recipe_path(recipe), class: "btn btn-dark" %>
