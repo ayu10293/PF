@@ -52,7 +52,6 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipe = Recipe.find(params[:recipes_id])
     @recipes = Recipe.all
   end
 
