@@ -1,4 +1,4 @@
-<h2 class="shadow"><div class="container">会員一覧</div></h2>
+<h2><div class="container">会員一覧</div></h2>
 <% @customers.each do |customer|%>
 <div><%= link_to customer.name, admin_customer_path(customer)%></div>
 <% end %>
