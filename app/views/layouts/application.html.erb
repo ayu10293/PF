@@ -13,81 +13,74 @@
   </head>
 
   <body class="background-image">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <!--ログインしている場合-->
+        <% if customer_signed_in? %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <%= link_to new_recipe_path, class: "nav-link" do %>
+                レシピを投稿<i class="fa-solid fa-pen"></i>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to recipes_path, class: "nav-link" do %>
+                レシピ一覧<i class="fa-solid fa-utensils"></i>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to favorites_recipes_path, class: "nav-link" do %>
+                お気に入り<i class="fa-solid fa-heart"></i>
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to bags_path, class: "nav-link" do %>
+                買い物リスト<i class="fa-solid fa-pen"></i>
+              <% end %>
+            </li>
+          </ul>
+          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
+              ログアウト<i class="fa-solid fa-right-from-bracket"></i>
+            <% end %>
+          </ul>
 
-<div class="container">
-<div class="row">
-<div class="col-2">
-  <div class="nav-ber"></div>
-    <% if customer_signed_in? %>
-      <%= link_to new_recipe_path, class: "btn btn-success" do %>
-        レシピを投稿<i class="fa-solid fa-pen"></i>
-      <% end %>
-</div>
-<div class="col-2">
-      <%= link_to recipes_path, class: "btn btn-success" do %>
-        レシピ一覧<i class="fa-solid fa-utensils"></i>
-      <% end %>
-</div>
-<div class="col-2">
-      <%= link_to favorites_recipes_path, class: "btn btn-success" do %>
-        お気に入り<i class="fa-solid fa-heart"></i>
-      <% end %>
-</div>
-<div class="col-2">
-      <%= link_to customer_mypage_path(current_customer), class: "btn btn-success" do %>
-        マイページ<i class="fa-solid fa-user"></i>
-      <% end %>
-</div>
-<div class="col-2">
-      <%= link_to bags_path, class: "btn btn-success" do %>
-        買い物リスト<i class="fa-solid fa-pen"></i>
-      <% end %>
-</div>
-<div class="col-2">
-      <%= link_to destroy_customer_session_path, method: :delete, class: "btn btn-secondary" do %>
-        ログアウト<i class="fa-solid fa-right-from-bracket"></i>
-      <% end %>
-</div>
-<div class="col-4">
-    <% elsif admin_signed_in? %>
-      <%= link_to destroy_admin_session_path, method: :delete, class: "btn btn-success" do %>
-        管理者ログアウト<i class="fa-solid fa-lock"></i>
-      <% end %>
-</div>
-<div class="col-4">
-      <%= link_to admin_customers_path, class: "btn btn-success" do %>
-        会員一覧<i class="fa-solid fa-lock"></i>
-      <% end %>
-</div>
-<div class="col-4">
-      <%= link_to admin_recipes_path, class: "btn btn-success" do %>
-        レシピ一覧<i class="fa-solid fa-utensils"></i>
-      <% end %>
-</div>
-<div class="col-3">
-    <% else %>
-      <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, class: "btn btn-secondary btn-sm btn-block mb-3 sign_in", method: :post %>
-</div>
-<div class="col-3">
-      <%= link_to new_customer_registration_path, class: "btn btn-success" do %>
-        新規登録<i class="fa-solid fa-address-card"></i>
-      <% end %>
-</div>
-<div class="col-3">
-      <%= link_to new_customer_session_path, class: "btn btn-success" do %>
-        ログイン<i class="fa-solid fa-right-to-bracket"></i>
-      <% end %>
-</div>
-<div class="col-3">
-      <%= link_to new_admin_session_path, class: "btn btn-success" do %>
-        管理者ログイン<i class="fa-solid fa-unlock"></i>
-      <% end %>
-</div>
-    <% end %>
-</div>
-</div>
-</div>
-<div><%= flash[:notice] %></div>
-    <%= yield %>
+          <!--adminがログインしている場合-->
+        <% elsif admin_signed_in? %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <%= link_to admin_recipes_path, class: "nav-link" do %>
+              レシピ一覧<i class="fa-solid fa-utensils"></i>
+            <% end %>
+            <%= link_to admin_customers_path, class: "nav-link" do %>
+              会員一覧<i class="fa-solid fa-lock"></i>
+            <% end %>
+          </ul>
+          <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link" do %>
+              管理者ログアウト<i class="fa-solid fa-lock"></i>
+            <% end %>
+          </ul>
+
+          <!--ログインしていない場合-->
+        <% else %>
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <%= link_to users_guest_sign_in_path, class: "nav-link", method: :post do %>
+              ゲストログイン（閲覧用）<i class="fa-solid fa-address-card"></i>
+            <% end %>
+            <%= link_to new_customer_registration_path, class: "nav-link" do %>
+              新規登録<i class="fa-solid fa-address-card"></i>
+            <% end %>
+            <%= link_to new_customer_session_path, class: "nav-link" do %>
+              ログイン<i class="fa-solid fa-address-card"></i>
+            <% end %>
+            <%= link_to new_admin_session_path, class: "nav-link" do %>
+              管理者ログイン<i class="fa-solid fa-unlock"></i>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </nav>
+  <div><%= flash[:notice] %></div>
+  <%= yield %>
   </body>
 </html>
