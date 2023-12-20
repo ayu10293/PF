@@ -1,16 +1,14 @@
 <div class="container">
- <style>
-    .text {
-    color: blue;  /* 目立たせたいテキストの色を指定する */
-    font-size: 40px;  /* テキストのフォントサイズを指定する */
-    font-weight: bold;  /* テキストを太字にする */
-    text-align: center;
-    text-decoration: underline;
-    text-shadow: 2px 2px 0px white;
-    }
-</style>
 
 <h1 class="text">新しいレシピを投稿</h1>
+  <% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました。
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= form_with model: @recipe do |f| %>
     <%= render "form", f: f, name: "レシピを投稿" %>
   <% end %>

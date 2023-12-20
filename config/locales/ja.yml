@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      recipe: レシピ
+      recipe_ingredients: 材料
+    attributes:
+      recipe:
+        title: レシピ名
+        body: 内容
+      recipe_ingredients:
+        quantity: 量
+        name: 食材名

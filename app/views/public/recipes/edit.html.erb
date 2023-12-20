@@ -1,5 +1,13 @@
 <div class="container">
   <h1>レシピの編集</h1>
+  <% if @recipe.errors.any? %>
+    <%= @recipe.errors.count %>件のエラーが発生しました。
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= form_with model: @recipe, method: :patch do |f| %>
     <%= render "form", f: f, name: "レシピを更新" %>
   <% end %>
