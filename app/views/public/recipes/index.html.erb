@@ -25,6 +25,7 @@
       <%= render "public/favorites/favorites", recipe: recipe %>
     </div>
   </div>
+  <%= recipe.created_at.strftime("%Y-%m-%d %H:%M") %>
   <% end %>
-
+<%= paginate @recipes %>
 </div>

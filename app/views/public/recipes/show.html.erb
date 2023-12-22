@@ -1,6 +1,6 @@
 <div class="container">
   <h1 class="list"><div class="center-text"><%= @recipe.title %></div></h1>
-  
+
 <div class="frame">
     <%= simple_format(@recipe.body, class: "recipe-dot-line") %>
 </div>
@@ -44,6 +44,9 @@
       <%= link_to 'レシピを編集', edit_recipe_path(@recipe), class: "btn btn-success", style: "border-width: 3px; border-color: black;" %>
       <%= link_to 'レシピを削除', recipe_path(@recipe), class: "btn btn-success", style: "border-width: 3px; border-color: black;", method: :delete, data: {confirm: "本当に削除しますか？"} %>
     <% end %>
+  </div>
+  <div class="col-1">
+    <%= render "public/favorites/favorites", recipe: @recipe %>
   </div>
 
   <%= render "public/comments/index", recipe: @recipe, comment: @comment %>

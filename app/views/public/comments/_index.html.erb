@@ -12,7 +12,7 @@
       </div>
       <% if comment.customer == current_customer %>
         <div class="action">
-          <%= link_to "Destroy", admin_recipe_comment_path(recipe, comment), method: :delete, class: "btn btn-sm btn-danger" %>
+          <%= link_to "Destroy", admin_recipe_comment_path(recipe, comment), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-sm btn-danger" %>
         </div>
       <% end %>
     </div>

@@ -52,7 +52,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def index
-    @recipes = Recipe.all.order(created_at: :desc)
+    @recipes = Recipe.order(created_at: :desc).page(params[:page]).per(2)
   end
 
   def show
