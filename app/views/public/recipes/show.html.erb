@@ -46,9 +46,8 @@
     <% end %>
   </div>
   <div class="col-1">
-    <%= render "public/favorites/favorites", recipe: @recipe %>
+      <%= render "public/favorites/favorites", recipe: @recipe %>
   </div>
-
   <%= render "public/comments/index", recipe: @recipe, comment: @comment %>
   <%= render "public/comments/form", recipe: @recipe, comment: @comment %>
 

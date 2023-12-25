@@ -1,0 +1,2 @@
+$("#favorite_btn_<%= @recipe.id %>").html("<%= j(render "public/favorites/favorites", recipe: @recipe) %>");
+// #favorite_btn_%= @recipe.id %を持ってくる 探してきた要素の中身を書き換えるpublic/favorites/favoritesを読み込みなおす

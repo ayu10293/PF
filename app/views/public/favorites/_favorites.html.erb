@@ -1,11 +1,14 @@
 <% if customer_signed_in? %>
+<div id="favorite_btn_<%= recipe.id %>">
 <% if recipe.favorite_by?(current_customer) %>
-  <%= link_to recipe_favorites_path(recipe), method: :delete do %>
+  <%= link_to recipe_favorites_path(recipe), method: :delete, remote: true do %>
+
     <i class="fa-solid fa-heart"></i>
   <% end %>
 <% else %>
-  <%= link_to recipe_favorites_path(recipe), method: :post do %>
+  <%= link_to recipe_favorites_path(recipe), method: :post, remote: true do %>
     <i class="fa-regular fa-heart"></i>
   <% end %>
 <% end %>
+</div>
 <% end %>
