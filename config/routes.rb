@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   #ゲストログイン
-  devise_scope :user do
-    post "users/guest_sign_in", to: "users#guest_sign_in"
+  devise_scope :customer do
+    post "customers/guest_sign_in", to: "customers/sessions#guest_sign_in"
   end
 
   root to: 'homes#top'

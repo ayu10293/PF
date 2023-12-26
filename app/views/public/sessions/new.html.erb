@@ -1,7 +1,6 @@
-<h2 class="shadow">ログイン</h2>
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="shadow">
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -23,6 +22,5 @@
     <%= f.submit "ログイン" %>
   </div>
 <% end %>
-</div>
 <%= render "public/shared/links" %>
 

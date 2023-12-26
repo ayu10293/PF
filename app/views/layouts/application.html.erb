@@ -42,6 +42,7 @@
                 買い物リスト<i class="fa-solid fa-pen"></i>
               <% end %>
             </li>
+
             </ul>
             <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
               <%= link_to destroy_customer_session_path, method: :delete, class: "nav-link" do %>
@@ -70,7 +71,7 @@
           <!--ログインしていない場合-->
         <% else %>
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <%= link_to users_guest_sign_in_path, class: "nav-link", method: :post do %>
+            <%= link_to customers_guest_sign_in_path, class: "nav-link", method: :post do %>
               ゲストログイン（閲覧用）<i class="fa-solid fa-address-card"></i>
             <% end %>
             <%= link_to new_customer_registration_path, class: "nav-link" do %>
