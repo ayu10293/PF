@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="shadow">買い物リスト</h2>
+  <h2>買い物リスト</h2>
   <% @favorites.each do |favorite| %>
     <div class="list">
       <h3><%= link_to favorite.recipe.title, recipe_path(favorite.recipe) %></h3>
