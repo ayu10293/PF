@@ -2,10 +2,6 @@
   text-align: center;
 }
 
-.container {
-
-}
-
 .frame {
         border: 1px solid black; /* 枠線を表示させる */
         padding: 10px; /* 枠内の余白を設定する */
@@ -20,7 +16,7 @@
   background-size: 8px 2px;
   padding-bottom: 5px;
   background-position: left bottom;
-  background-repeat: repeat-x
+  background-repeat: repeat-x;
 }
 
 .text {
